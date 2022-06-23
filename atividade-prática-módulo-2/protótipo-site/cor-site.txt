@@ -1,0 +1,3 @@
+cor azul da logo: #219ebc
+
+cor amarela da logo: #ffb703
