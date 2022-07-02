@@ -7,7 +7,7 @@
     <ul>
         <li></li>
     </ul>
-    <li>Módulo 2 - Iniciação ao Mundo da Computação</li>
+    <li>Atividade Prática Módulo 2 - Iniciação ao Mundo da Computação</li>
     <ul>
         <li><a href="atividade-prática-módulo-2/protótipo-site">Protótipo site</a> - HTML, CSS, BOOTSTRAP</li>
         <li><a href="atividade-prática-módulo-2/pseudocódigo-portugol">Pseudocódigo portugol</a> - VisualG</li>
