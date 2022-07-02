@@ -1,5 +1,22 @@
 {
+  "name": "herlivre",
+  "version": "1.0.0",
+  "description": "Site de agência de viagens Herlivre criado para o programa Recode Pro",
+  "main": "index.html",
   "dependencies": {
     "bootstrap": "^5.1.3"
-  }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucasInmanuel/recode-pro-2022.git"
+  },
+  "author": "Lucas Emanuel Santana Dos Santos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LucasInmanuel/recode-pro-2022/issues"
+  },
+  "homepage": "https://github.com/LucasInmanuel/recode-pro-2022#readme"
 }
