@@ -4,6 +4,7 @@
 <h2>Atividades avaliativas</h2>
 <ol>
     <li>Módulo 1 - Capacitação Socioemocional</li>
+    <ul></ul>
     <li>Módulo 2 - Iniciação ao Mundo da Computação</li>
     <ul>
         <li><a href="atividade-prática-módulo-2/protótipo-site">Protótipo site</a> - HTML, CSS, BOOTSTRAP</li>
