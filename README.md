@@ -9,7 +9,7 @@
     </ul>
     <li>Atividade Prática do Módulo 2 - Iniciação ao Mundo da Computação</li>
     <ul>
-        <li><a href="atividade-prática-módulo-2/protótipo-site">Protótipo site</a> - HTML, CSS, BOOTSTRAP</li>
-        <li><a href="atividade-prática-módulo-2/pseudocódigo-portugol">Pseudocódigo portugol</a> - VisualG</li>
+        <li><a href="atividade-prática-módulo-2/protótipo-site-herlivre-viagens">Sita da agência de viagens Herlivre</a>: protótipo de um site usando HTML, CSS, BOOTSTRAP.</li>
+        <li><a href="atividade-prática-módulo-2/pseudocódigo-portugol">Cadastro para uma agência de viagens</a>: simulação de um cadastro usando Pseudocódigo(portugol) no VisualG.</li>
     <ul>
 </ol>
