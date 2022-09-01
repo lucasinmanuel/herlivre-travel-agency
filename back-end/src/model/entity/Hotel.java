@@ -5,19 +5,19 @@ public class Hotel {
     private int id_cidade;
     private String nome;
     private int qtd_estrelas;
-    private double diarias_min;
+    private double valor_min;
     private boolean wifi;
     private boolean cafe_manha;
     private String cep;
     private String logradouro;
     private String bairro;
 
-    public Hotel(int id, int id_cidade, String nome, int qtd_estrelas, double diarias_min, boolean wifi, boolean cafe_manha, String cep, String logradouro, String bairro) {
+    public Hotel(int id, int id_cidade, String nome, int qtd_estrelas, double valor_min, boolean wifi, boolean cafe_manha, String cep, String logradouro, String bairro) {
         this.id = id;
         this.id_cidade = id_cidade;
         this.nome = nome;
         this.qtd_estrelas = qtd_estrelas;
-        this.diarias_min = diarias_min;
+        this.valor_min = valor_min;
         this.wifi = wifi;
         this.cafe_manha = cafe_manha;
         this.cep = cep;
@@ -61,12 +61,12 @@ public class Hotel {
         this.qtd_estrelas = qtd_estrelas;
     }
 
-    public double getDiarias_min() {
-        return diarias_min;
+    public double getValor_min() {
+        return valor_min;
     }
 
-    public void setDiarias_min(double diarias_min) {
-        this.diarias_min = diarias_min;
+    public void setValor_min(double valor_min) {
+        this.valor_min = valor_min;
     }
 
     public boolean isWifi() {

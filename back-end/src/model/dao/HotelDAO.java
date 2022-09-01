@@ -14,7 +14,7 @@ public class HotelDAO {
     Connection conn = null;
     PreparedStatement pstm = null;
 
-    public void create(Hotel hotel) {
+    public void insert(Hotel hotel) {
 
         String sql = "INSERT INTO cidades(id_cidade,nome,qtd_estrelas,diarias_min,wifi,cafe_manhacep,logradouro,bairro)" +
                 " VALUES(?,?,?,?,?,?,?,?,?)";
@@ -27,7 +27,7 @@ public class HotelDAO {
             pstm.setInt(1, hotel.getId());
             pstm.setString(2, hotel.getNome());
             pstm.setInt(3,hotel.getQtd_estrelas());
-            pstm.setDouble(4,hotel.getDiarias_min());
+            pstm.setDouble(4,hotel.getValor_min());
             pstm.setBoolean(5, hotel.isWifi());
             pstm.setBoolean(6, hotel.isCafe_manha());
             pstm.setString(7, hotel.getCep());
@@ -55,6 +55,60 @@ public class HotelDAO {
                 e.printStackTrace();
             }
         }
+    }
+
+    public Hotel getHotelById(int id_hotel){
+        String sql = "SELECT * FROM hoteis WHERE id = ? OR id != ?";
+        ResultSet rset = null;
+        Hotel hotel = new Hotel();
+        try {
+            // Cria uma conexão com o banco
+            conn = ConnectionFactory.createConnectionToMySQL();
+
+            // Cria um PreparedStatment, classe usada para executar a query
+            pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, id_hotel);
+            pstm.setInt(2, 1);
+            rset = pstm.executeQuery();
+
+            if (rset.next()) {
+                hotel.setId(rset.getInt("id"));
+                hotel.setId_cidade(rset.getInt("id_cidade"));
+                hotel.setNome(rset.getString("nome"));
+                hotel.setValor_min(rset.getDouble("valor_min"));
+                hotel.setQtd_estrelas(rset.getInt("qtd_estrelas"));
+                hotel.setWifi(rset.getBoolean("wifi"));
+                hotel.setCafe_manha(rset.getBoolean("cafe_manha"));
+                hotel.setCep(rset.getString("cep"));
+                hotel.setLogradouro(rset.getString("logradouro"));
+                hotel.setBairro(rset.getString("bairro"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Fecha as conexões
+            try {
+                if (rset != null) {
+                    rset.close();
+                }
+
+                if (pstm != null) {
+
+                    pstm.close();
+                }
+
+                if (conn != null) {
+                    conn.close();
+                }
+
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+        }
+
+        return hotel;
     }
 
     public int getIdByNome(String nome_hotel){
@@ -104,7 +158,7 @@ public class HotelDAO {
 
     public List<Hotel> getHoteisByIdCidade(int id_cidade) {
 
-        String sql = "SELECT * FROM hoteis WHERE id_cidade = ?";
+        String sql = "SELECT * FROM hoteis WHERE id_cidade = ? AND id != ?";
         ResultSet rset = null;
         List<Hotel> hoteis = new ArrayList<>();
 
@@ -115,6 +169,7 @@ public class HotelDAO {
             // Cria um PreparedStatment, classe usada para executar a query
             pstm = conn.prepareStatement(sql);
             pstm.setInt(1, id_cidade);
+            pstm.setInt(2, 1);
             rset = pstm.executeQuery();
 
             while (rset.next()) {
@@ -122,7 +177,7 @@ public class HotelDAO {
                 hotel.setId(rset.getInt("id"));
                 hotel.setId_cidade(rset.getInt("id_cidade"));
                 hotel.setNome(rset.getString("nome"));
-                hotel.setDiarias_min(rset.getDouble("diarias_min"));
+                hotel.setValor_min(rset.getDouble("valor_min"));
                 hotel.setQtd_estrelas(rset.getInt("qtd_estrelas"));
                 hotel.setWifi(rset.getBoolean("wifi"));
                 hotel.setCafe_manha(rset.getBoolean("cafe_manha"));

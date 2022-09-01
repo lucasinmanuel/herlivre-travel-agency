@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Herlivre - Faça o Login</title>
+  <meta name="author" content="Herlivre - Lucas Emanuel Santana dos Santos" />
+  <meta name="description" content="Herlivre - Encontre a melhor forma de viajar - Agência de viagens." />
+  <meta name="keywords" content="desenvolvimento,agência,viagem,milhas,carros,aluguel,hotéis,voos" />
+  <meta name="theme-color" content="#ffc107" />
+  <!-- <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" /> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+</head>
+
+<body>
+  <main>
+    <header class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="../."><img src="../images/logos/herlivre.png" width="200px"
+            alt="logo herlivre" /></a>
+
+        <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon fs-2"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-md-flex justify-content-md-end" id="navbarNav">
+          <ul class="navbar-nav text-center d-flex align-items-center">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="../.">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./destinos-nacionais.html">Destino</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./promocoes.html">Promoções</a>
+            </li>
+            <li class="nav-item">
+              <div class="dropdown">
+                <button class="btn btn-outline-info dropdown-toggle mx-1 shadow-none" type="button"
+                  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Ajuda
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li>
+                    <a class="dropdown-item" href="./contato.html">Contato</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./sobre.html">Sobre</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item mx-auto">
+              <a class="nav-link active d-flex" href="./login.html">
+                <img width="24px" src="../images/icons/login.svg" alt="ícone de login" />
+                <span class="ms-1">Entrar</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!--container-->
+    </header>
+
+    <section class="login bg-info">
+      <style>
+        section.login {
+          background-image: url("../images/nuvens.png");
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-blend-mode: multiply;
+        }
+      </style>
+
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-11 col-md-8 col-xl-5 mx-auto p-3 rounded-3 shadow-lg bg-light">
+            <h1>Acesse a conta!</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+              et turpis nec nisi vestibulum egestas ut sit amet lectus.
+              Aliquam laoreet, massa ut consequat ultricies.
+            </p>
+            <form>
+              <label for="email" class="form-label">E-mail*</label>
+              <input required id="email" class="w-100 form-control mb-2" type="email" name="email" />
+              <label for="senha" class="form-label">Senha*</label>
+              <input id="senha" class="w-100 form-control" type="password" name="senha" />
+              <div class="text-center">
+                <input class="w-50 btn btn-warning my-3" type="submit" value="Entrar" />
+              </div>
+            </form>
+            <div>
+              <p>Faça login com:</p>
+
+              <a class="me-2" href="https://gmail.com"><img width="32px" alt="Gmail Logo"
+                  src="../images/icons/gmail.svg" alt="Ícone Gmail" /></a>
+              <a href="https://facebook.com"><img width="32px" alt="Facebook Logo" src="../images/icons/facebook.png"
+                  alt="Ícone Facebook" /></a>
+
+              <p class="mt-3">
+                Não está registrado? <a href="registro.html">Clique aqui!</a>
+              </p>
+            </div>
+          </div>
+          <!--col-->
+        </div>
+        <!--row-->
+      </div>
+      <!--container-->
+    </section>
+    <!--login-->
+
+    <footer class="border-top border-2">
+      <div class="container py-4">
+        <div class="row mt-3">
+          <div class="col-12 text-center">
+            <a class="navbar-brand" href="../."><img src="../images/logos/herlivre.png" width="200px" /></a>
+          </div>
+          <!--col-->
+        </div>
+        <!--row-->
+
+        <div class="row mt-5">
+          <div class="col-12 col-sm-6 col-xl-3 text-center text-xl-start">
+            <a class="d-block text-muted text-decoration-none mb-3" href="#">Hospedagem em promoção</a>
+            <a class="d-block text-muted text-decoration-none mb-3" href="#">Hospedagens baratas</a>
+            <a class="d-block text-muted text-decoration-none mb-3" href="#">Hospedagens imperdíveis</a>
+            <a class="d-block text-muted text-decoration-none mb-3" href="#">Hospedagens bem avaliadas</a>
+          </div>
+          <!--col-->
+
+          <div class="col-12 col-sm-6 col-xl-3 text-center text-xl-start">
+            <a class="d-block text-muted text-decoration-none mb-3" href="#">Passagens com milhas</a>
+            <a class="d-block text-muted text-decoration-none mb-3" href="#">Passagens madrugada</a>
+            <a class="d-block text-muted text-decoration-none mb-3" href="#">Passagens promocionais</a>
+            <a class="d-block text-muted text-decoration-none mb-3" href="#">Passagens baratas</a>
+          </div>
+          <!--col-->
+
+          <div class="col-12 col-sm-6 col-xl-3 text-center text-xl-start">
+            <a class="d-block text-muted text-decoration-none mb-3" href="#">Pacotes em promoção</a>
+            <a class="d-block text-muted text-decoration-none mb-3" href="#">Pacotes imperdíveis</a>
+            <a class="d-block text-muted text-decoration-none mb-3" href="#">Pacotes baratos</a>
+            <a class="d-block text-muted text-decoration-none mb-3" href="#">Pacotes promoção relâmpago</a>
+          </div>
+          <!--col-->
+
+          <div class="col-12 col-sm-6 col-xl-3 text-center text-xl-start">
+            <a class="d-block text-muted text-decoration-none mb-3" href="#">Aluguel de carros baratos</a>
+            <a class="d-block text-muted text-decoration-none mb-3" href="#">Aluguel de carros promocionais</a>
+            <a class="d-block text-muted text-decoration-none mb-3" href="#">Aluguel de carros populares</a>
+            <a class="d-block text-muted text-decoration-none mb-3" href="#">Aluguel de carros imperdíveis</a>
+          </div>
+          <!--col-->
+        </div>
+        <!--row-->
+
+        <div class="row">
+          <div class="col-12 text-center mt-4">
+            <h3 class="text-muted">nos siga!</h3>
+            <a href="https://www.facebook.com/" class="d-inline-block mx-2 mb-2" target="_blank"><img width="50px"
+                src="../images/icons/facebook.png" alt="ícone facebook" /></a>
+            <a href="https://www.instagram.com/" class="d-inline-block mx-2 mb-2" target="_blank"><img width="50px"
+                src="../images/icons/instagram.png" alt="ícone instagram" /></a>
+            <a href="https://twitter.com/" class="d-inline-block mx-2 mb-2" target="_blank"><img width="50px"
+                src="../images/icons/twitter.png" alt="ícone twitter" /></a>
+            <a href="https://www.tiktok.com/" class="d-inline-block mx-2 mb-2" target="_blank"><img width="50px"
+                src="../images/icons/tik-tok.png" alt="ícone tik tok" /></a>
+          </div>
+          <!--col-->
+        </div>
+        <!--row-->
+
+        <div class="row text-center mt-5">
+          <div class="col-12">
+            <p class="text-muted fs-5">Todos os direitos reservados</p>
+          </div>
+          <!--col-->
+        </div>
+        <!--row-->
+      </div>
+      <!--container-->
+    </footer>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

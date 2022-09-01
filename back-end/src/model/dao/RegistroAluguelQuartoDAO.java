@@ -1,40 +1,44 @@
 package model.dao;
-import model.entity.Cidade;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import model.entity.RegistroAluguelQuarto;
+
+import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CidadeDAO implements ICidadeDAO {
+public class RegistroAluguelQuartoDAO implements IRegistroAluguelQuartoDAO {
 
     Connection conn = null;
     PreparedStatement pstm = null;
 
-    public void insert(Cidade cidade) {
+    public int insert(RegistroAluguelQuarto registroAluguelQuarto) {
 
-        String sql = "INSERT INTO cidades(nome,estado)" + " VALUES(?,?)";
-
+        String sql = "INSERT INTO registroAluguelQuarto(id_quarto,entrada,saida)" + " VALUES(?,?,?)";
+        ResultSet rset;
+        int id_registroAluguel = -1;
         try {
 
             conn = ConnectionFactory.createConnectionToMySQL();
 
-            // Cria um PreparedStatment, classe usada para executar a query
-            pstm = conn.prepareStatement(sql);
+            pstm = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            // Adiciona o valor do primeiro parâmetro da sql
-            pstm.setString(1, cidade.getNome());
-            // Adicionar o valor do segundo parâmetro da sql
-            pstm.setString(2, cidade.getUf());
+            pstm.setInt(1, registroAluguelQuarto.getId_quarto());
+            pstm.setDate(2, new Date(registroAluguelQuarto.getEntrada().getTime()));
+            pstm.setDate(3, new Date(registroAluguelQuarto.getSaida().getTime()));
 
-            // Executa a sql para inserção dos dados
-            pstm.execute();
+            pstm.executeUpdate();
+
+            rset = pstm.getGeneratedKeys();
+            if (rset.next()) {
+                id_registroAluguel = rset.getInt(1);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            // Fecha as conexões
+
             try {
                 if (pstm != null) {
 
@@ -50,12 +54,12 @@ public class CidadeDAO implements ICidadeDAO {
                 e.printStackTrace();
             }
         }
-
+        return id_registroAluguel;
     }
 
     public boolean deleteById(int id) {
 
-        String sql = "DELETE FROM cidades WHERE id = ?";
+        String sql = "DELETE FROM registroAluguelQuarto WHERE id = ?";
         boolean result = false;
 
         try {
@@ -86,9 +90,9 @@ public class CidadeDAO implements ICidadeDAO {
         return result;
     }
 
-    public void updateById(Cidade cidade){
+    public void updateById(RegistroAluguelQuarto registroAluguelQuarto) {
 
-        String sql = "UPDATE cidades SET nome = ?,estado = ? WHERE id = ?";
+        String sql = "UPDATE registroAluguelQuarto SET id_quarto = ?,entrada = ?,saida = ? WHERE id = ?";
 
         try {
 
@@ -96,9 +100,10 @@ public class CidadeDAO implements ICidadeDAO {
 
             pstm = conn.prepareStatement(sql);
 
-            pstm.setString(1, cidade.getNome());
-            pstm.setString(2, cidade.getUf());
-            pstm.setInt(3,cidade.getId());
+            pstm.setInt(1, registroAluguelQuarto.getId_quarto());
+            pstm.setDate(2, new Date(registroAluguelQuarto.getEntrada().getTime()));
+            pstm.setDate(3, new Date(registroAluguelQuarto.getSaida().getTime()));
+            pstm.setInt(4, registroAluguelQuarto.getId());
 
             // Executa a sql para inserção dos dados
             pstm.execute();
@@ -125,28 +130,27 @@ public class CidadeDAO implements ICidadeDAO {
 
     }
 
-    public List<Cidade> getCidades() {
+    public List<RegistroAluguelQuarto> getRegistroAlugueis() {
 
-        String sql = "SELECT * FROM cidades WHERE id != ?";
+        String sql = "SELECT * FROM registroAluguelQuarto where id != ?";
         ResultSet rset = null;
-        List<Cidade> cidades = new ArrayList<>();
+        List<RegistroAluguelQuarto> registroAlugueis = new ArrayList<>();
         try {
             // Cria uma conexão com o banco
             conn = ConnectionFactory.createConnectionToMySQL();
 
             // Cria um PreparedStatment, classe usada para executar a query
             pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, 1);
+            pstm.setInt(1,1);
             rset = pstm.executeQuery();
 
             while (rset.next()) {
-                Cidade cidade = new Cidade();
-                cidade.setId(rset.getInt("id"));
-                cidade.setNome(rset.getString("nome"));
-                cidade.setUf(rset.getString("uf"));
-                cidade.setPais(rset.getString("pais"));
-                cidade.setContinente(rset.getString("continente"));
-                cidades.add(cidade);
+                RegistroAluguelQuarto registroAluguelQuarto = new RegistroAluguelQuarto();
+                registroAluguelQuarto.setId(rset.getInt("id"));
+                registroAluguelQuarto.setId_quarto(rset.getInt("id_quarto"));
+                registroAluguelQuarto.setEntrada(rset.getDate("entrada"));
+                registroAluguelQuarto.setSaida(rset.getDate("saida"));
+                registroAlugueis.add(registroAluguelQuarto);
             }
 
         } catch (Exception e) {
@@ -173,35 +177,36 @@ public class CidadeDAO implements ICidadeDAO {
             }
         }
 
-        return cidades;
+        return registroAlugueis;
     }
 
-    public int getIdByNome(String nome_cidade) {
-
-        String sql = "SELECT * FROM cidades WHERE nome = ?";
+    public RegistroAluguelQuarto getIdQuartoByIdRegistro(int id_registro) {
+        String sql = "SELECT * FROM registroAluguelQuarto WHERE id_registro = ? OR entrada = ? ORDER BY entrada";
         ResultSet rset = null;
-        int id_cidade = -1;
+        RegistroAluguelQuarto registroAluguelQuarto = new RegistroAluguelQuarto();
         try {
             // Cria uma conexão com o banco
             conn = ConnectionFactory.createConnectionToMySQL();
 
             // Cria um PreparedStatment, classe usada para executar a query
             pstm = conn.prepareStatement(sql);
-            pstm.setString(1, nome_cidade);
+            pstm.setInt(1, id_registro);
+            pstm.setDate(2, new Date(Date.valueOf("9999-12-31").getTime()));
             rset = pstm.executeQuery();
 
-
-            if(rset.next()) {
-                id_cidade = rset.getInt("id");
+            if (rset.next()) {
+                registroAluguelQuarto.setId(rset.getInt("id"));
+                registroAluguelQuarto.setId_quarto(rset.getInt("id_quarto"));
+                registroAluguelQuarto.setEntrada(rset.getDate("entrada"));
+                registroAluguelQuarto.setSaida(rset.getDate("saida"));
             }
-
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             // Fecha as conexões
             try {
-                if(rset != null) {
+                if (rset != null) {
                     rset.close();
                 }
 
@@ -215,35 +220,35 @@ public class CidadeDAO implements ICidadeDAO {
                 }
 
             } catch (Exception e) {
-
                 e.printStackTrace();
             }
         }
 
-        return id_cidade;
+        return registroAluguelQuarto;
     }
 
-    public Cidade getCidadeById(int id_cidade) {
-
-        String sql = "SELECT * FROM cidades WHERE id = ?";
+    public List<RegistroAluguelQuarto> getRegAlugueisByIdQuarto(int id_quarto) {
+        String sql = "SELECT * FROM registroAluguelQuarto WHERE id_quarto = ? OR entrada = ? ORDER BY entrada";
         ResultSet rset = null;
-        Cidade cidade = new Cidade();
+        List<RegistroAluguelQuarto> alugueis = new ArrayList<>();
+
         try {
             // Cria uma conexão com o banco
             conn = ConnectionFactory.createConnectionToMySQL();
 
             // Cria um PreparedStatment, classe usada para executar a query
             pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, id_cidade);
+            pstm.setInt(1, id_quarto);
+            pstm.setDate(2, new Date(Date.valueOf("9999-12-31").getTime()));
             rset = pstm.executeQuery();
 
-
-            if(rset.next()) {
-                cidade.setId(rset.getInt("id"));
-                cidade.setNome(rset.getString("nome"));
-                cidade.setUf(rset.getString("uf"));
-                cidade.setPais(rset.getString("pais"));
-                cidade.setContinente(rset.getString("continente"));
+            while (rset.next()) {
+                RegistroAluguelQuarto aluguel = new RegistroAluguelQuarto();
+                aluguel.setId(rset.getInt("id"));
+                aluguel.setId_quarto(rset.getInt("id_quarto"));
+                aluguel.setEntrada(rset.getDate("entrada"));
+                aluguel.setSaida(rset.getDate("saida"));
+                alugueis.add(aluguel);
             }
 
         } catch (Exception e) {
@@ -251,7 +256,7 @@ public class CidadeDAO implements ICidadeDAO {
         } finally {
             // Fecha as conexões
             try {
-                if(rset != null) {
+                if (rset != null) {
                     rset.close();
                 }
 
@@ -265,13 +270,11 @@ public class CidadeDAO implements ICidadeDAO {
                 }
 
             } catch (Exception e) {
-
                 e.printStackTrace();
             }
         }
 
-        return cidade;
+        return alugueis;
     }
-
 
 }

@@ -3,122 +3,140 @@ create database if not exists herlivre;
 create table if not exists cidades(
 
 	id int primary key auto_increment,
-    nome varchar(50),
-    uf char(2)
+    nome varchar(50) not null,
+    uf char(2) not null,
+    pais varchar(30) not null,
+    continente varchar(20) not null
 
 );
 
-insert into cidades(nome,uf) values("Salvador","BA");
-insert into cidades(nome,uf) values("Duque de Caxias","RJ");
-insert into cidades(nome,uf) values("São Paulo","SP");
-insert into cidades(nome,uf) values("Recife","PE");
-insert into cidades(nome,uf) values("Fortaleza","CE");
-insert into cidades(nome,uf) values("Rio de Janeiro","RJ");
-insert into cidades(nome,uf) values("Brasília","DF");
-select * from cidades;
+insert into cidades(nome,uf,pais,continente) values("null","nu","null","null");
+
+select * from cidades where id != 1;
 
 create table if not exists hoteis(
 	
     id int primary key auto_increment,
-    id_cidade int,
-	nome varchar(50),
-    qtd_estrelas int,
-    valor_min double,
-    wifi boolean,
-    cafe_manha boolean,
-    cep varchar(10),
-    logradouro varchar(50),
-    bairro varchar(50),
+    id_cidade int not null,
+	nome varchar(50) unique not null,
+    qtd_estrelas int not null,
+    valor_min double not null,
+    wifi boolean not null,
+    cafe_manha boolean not null,
+    cep varchar(10) not null,
+    logradouro varchar(50) not null,
+    bairro varchar(50) not null,
     foreign key (id_cidade) references cidades (id) 
 
 );
 
-/*HOTÉIS DA CIDADE DE SALVADOR*/
 insert into hoteis(id_cidade,nome,qtd_estrelas,valor_min,wifi,cafe_manha,cep,logradouro,bairro) 
-values(1,"Sotero Hotel",4,206,true,true,"41770-235","R. Dr. José Peroba, 97","Stiep");
-insert into hoteis(id_cidade,nome,qtd_estrelas,valor_min,wifi,cafe_manha,cep,logradouro,bairro) 
-values(1,"Bahia Othon Palace",5,247,true,true,"40170-010","Av. Oceânica, 2294","Ondina");
+values(1,"null",0,0,true,true,"null","null","null");
 
-/*HOTÉIS DA CIDADE DE SÃO PAULO*/
-insert into hoteis(id_cidade,nome,qtd_estrelas,valor_min,wifi,cafe_manha,cep,logradouro) 
-values(3,"Radisson Vila Olímpia Atlantica",5,740,true,true,"04551-010","Rua Fidêncio Ramos, 420");
-insert into hoteis(id_cidade,nome,qtd_estrelas,valor_min,wifi,cafe_manha,cep,logradouro,bairro) 
-values(3,"Vila Galé Paulista",4,627,true,true,"01415-002","R. Bela Cintra, 952","Consolação");
-
-select * from hoteis;
+select * from hoteis where id != 1;
 
 create table if not exists quartos(
 
 	id int primary key auto_increment,
-	numero int,
-    id_hotel int,
-    valor double,
-    diaria int,
-    qtd_camas int,
-    tipo varchar(20),
+	numero int not null,
+    id_hotel int not null,
+    valor double not null,
+    diaria int not null,
+    qtd_camas int not null,
+    tipo varchar(20) not null,
     foreign key (id_hotel) references hoteis (id)
 
 );
 
-/*QUARTOS DO HOTEL SOTERO HOTEL*/
 insert into quartos(numero,id_hotel,valor,diaria,qtd_camas,tipo) 
-values(212,1,206,3,1,"Single room");
-insert into quartos(numero,id_hotel,valor,diaria,qtd_camas,tipo) 
-values(215,1,212,2,2,"Twin room");
-insert into quartos(numero,id_hotel,valor,diaria,qtd_camas,tipo) 
-values(302,1,232,3,2,"Twin room");
-insert into quartos(numero,id_hotel,valor,diaria,qtd_camas,tipo) 
-values(310,1,257,3,1,"Double room");
+values(0,1,0,0,0,"null");
 
-/*QUARTOS DO HOTEL BAHIA OTHON PALACE*/
-insert into quartos(numero,id_hotel,valor,diaria,qtd_camas,tipo) 
-values(322,2,267,3,1,"Double room");
-insert into quartos(numero,id_hotel,valor,diaria,qtd_camas,tipo) 
-values(219,2,247,2,2,"Twin room");
+select * from quartos where id != 1;
 
-select * from quartos;
+create table if not exists registroaluguelquarto(
+
+	id int primary key auto_increment,
+    id_quarto int not null,
+	entrada date not null,
+    saida date not null,
+    foreign key (id_quarto) references quartos (id)
+
+);
+
+/*GARANTE QUE UM NOVO REGISTRO SEJA ADICIONADO ATRÁS DESSE DELIMITADOR*/
+insert into registroaluguelquarto(id_quarto,entrada,saida) values(1,"9999-12-31","9999-12-31");
+
+select * from registroaluguelquarto order by entrada;
+SELECT * FROM registroaluguelquarto WHERE id_quarto = 4 OR entrada = "9999-12-31" ORDER BY entrada;
+
+create table if not exists voos(
+
+	id int primary key auto_increment,
+    id_cidade int not null,
+    ponto_partida varchar(30) not null,
+    companhia varchar(30) not null,
+    num_voo varchar(10) not null,
+    num_assento char(2) not null,
+    qtd_assentos_disp int,
+    data_partida datetime not null,
+    data_chegada datetime not null,
+    foreign key (id_cidade) references cidades (id)
+    
+);
+
+insert into voos(id_cidade,ponto_partida,companhia,num_voo,num_assento,data_partida,data_chegada) 
+values(1,"null","null",0,0,"9999-12-31","9999-12-31");
+
+select * from voos where id != 1;
+
+create table if not exists pacotes(
+
+	id int primary key auto_increment,
+    id_voo int not null,
+    id_registroaluguelquarto int not null,
+    total_pessoas int not null,
+    valor_original double not null,
+    desconto int,
+    valor_promocional double,
+    foreign key (id_voo) references voos (id),
+    foreign key (id_registroaluguelquarto) references registroaluguelquarto (id)
+    
+);
+
+insert into pacotes(id_voo,id_registroaluguelquarto,total_pessoas,valor_original,desconto,valor_promocional) 
+values(1,1,0,0,0,0);
+
+select * from pacotes;
 
 create table if not exists usuarios(
 
 	id int primary key auto_increment,
-    nome varchar(50),
-    cpf varchar(20) unique,
-    email varchar(30) unique,
-    senha varchar(255)
+    nome varchar(50) not null,
+    cpf varchar(20) unique not null,
+    email varchar(30) unique not null,
+    senha varchar(255) not null
     
 );
 
 insert into usuarios(nome,cpf,email,senha) 
-values("Lucas","123-345-678-99","lucas.recode@gmail.com","123");
-insert into usuarios(nome,cpf,email,senha) 
-values("Flavio","111-234-125-45","flavio.recode@gmail.com","321");
-insert into usuarios(nome,cpf,email,senha) 
-values("bruno","231-324-256-67","bruno.recode@gmail.com","132");
+values("adm","0","adm.recode@gmail.com","123456789");
 
-select * from usuarios;
+select * from usuarios where id != 1;
 
-create table if not exists registroAlugueis(
+create table if not exists comprovantes(
 
 	id int primary key auto_increment,
-    id_quarto int,
-    id_usuario int,
-	entrada date,
-    saida date,
-    foreign key (id_quarto) references quartos (id),
-    foreign key (id_usuario) references usuarios (id)
-
+    id_registroaluguelquarto int not null,
+    id_usuario int not null,
+    id_pacote int,
+    data_compra datetime not null,
+    foreign key (id_registroaluguelquarto) references registroaluguelquarto (id),
+    foreign key (id_usuario) references usuarios (id),
+    foreign key (id_pacote) references pacotes (id)
+    
 );
 
-insert into registroAlugueis(id_quarto,id_usuario,entrada,saida) values(1,1,"2022-08-25","2022-08-27");
-insert into registroAlugueis(id_quarto,id_usuario,entrada,saida) values(1,2,"2022-09-8","2022-09-16");
-insert into registroAlugueis(id_quarto,id_usuario,entrada,saida) values(2,3,"2022-09-12","2022-09-16");
-insert into registroAlugueis(id_quarto,id_usuario,entrada,saida) values(1,2,"2022-07-01","2022-07-12");
-insert into registroAlugueis(id_quarto,id_usuario,entrada,saida) values(1,1,"2022-10-03","2022-10-20");
+insert into comprovantes(id_registroaluguelquarto,id_usuario,id_pacote,data_compra) 
+values(1,1,1,"9999-12-31");
 
-/*GARANTE QUE UM NOVO REGISTRO SEJA ADICIONADO ATRÁS DESSE DELIMITADOR*/
-insert into registroAlugueis(entrada,saida) values("9999-12-31","9999-12-31");
-
-select * from registroAlugueis order by entrada;
-SELECT * FROM registroAlugueis WHERE id_quarto = 1 OR entrada = "9999-12-31" ORDER BY entrada;
-
-
+select * from comprovantes where id != 1;

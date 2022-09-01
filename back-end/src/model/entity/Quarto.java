@@ -4,13 +4,15 @@ public class Quarto {
     private int numero;
     private int id_hotel;
     private double valor;
+    private int diaria;
     private int qtd_camas;
     private String tipo;
 
-    public Quarto(int numero, int id_hotel, double valor, int qtd_camas, String tipo) {
+    public Quarto(int numero, int id_hotel, double valor, int qtd_camas, int diaria,String tipo) {
         this.numero = numero;
         this.id_hotel = id_hotel;
         this.valor = valor;
+        this.diaria = diaria;
         this.qtd_camas = qtd_camas;
         this.tipo = tipo;
     }
@@ -41,6 +43,14 @@ public class Quarto {
 
     public void setValor(double valor) {
         this.valor = valor;
+    }
+
+    public int getDiaria() {
+        return diaria;
+    }
+
+    public void setDiaria(int diaria) {
+        this.diaria = diaria;
     }
 
     public int getQtd_camas() {
