@@ -1,6 +1,6 @@
 <div align="center">
     <h1>Herlivre - Agência de viagens</h1>
-    <img src="images/avião-viagem.gif" alt="Um avião voando" />
+    <img src="front-end/images/avião-viagem.gif" alt="Um avião voando" />
 </div>
 
 <h2>Recode Pro 2022</h2>
