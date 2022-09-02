@@ -39,7 +39,7 @@ values(322,3,267,3,1,"Double room");
 insert into quartos(numero,id_hotel,valor,diaria,qtd_camas,tipo) 
 values(219,3,247,2,2,"Twin room");
 insert into quartos(numero,id_hotel,valor,diaria,qtd_camas,tipo) 
-values(219,3,238,3,2,"Double room");
+values(233,3,238,3,2,"Double room");
 
 /*QUARTOS DO HOTEL Radisson Vila Olímpia Atlantica - SÂO PAULO*/
 insert into quartos(numero,id_hotel,valor,diaria,qtd_camas,tipo) 
@@ -60,14 +60,14 @@ insert into registroaluguelquarto(id_quarto,entrada,saida) values(9,"2022-10-25"
 insert into registroaluguelquarto(id_quarto,entrada,saida) values(9,"2022-11-18","2022-11-22");*/
 
 /*VOOS*/
-insert into voos(id_cidade,ponto_partida,companhia,num_voo,num_assento,data_partida,data_chegada) 
-values(2,"Rio de Janeiro","Gol Transportes Aéreos","GA14CS","4C","2022-10-23 22:30:00","2022-10-20 23:12:00");
-insert into voos(id_cidade,ponto_partida,companhia,num_voo,num_assento,data_partida,data_chegada) 
-values(2,"Duque de Caxias","Gol Transportes Aéreos","GA14CS","4C","2022-10-19 10:20:00","2022-10-19 13:02:00");
-insert into voos(id_cidade,ponto_partida,companhia,num_voo,num_assento,data_partida,data_chegada)
-values(2,"São Paulo","Avianca","TU72VSF","8B","2022-11-02 22:30:00","2022-11-03 07:12:00");
-insert into voos(id_cidade,ponto_partida,companhia,num_voo,num_assento,data_partida,data_chegada)
-values(2,"São Paulo","Avianca","TU72VSF","3A","2022-10-02 10:20:00","2022-10-02 13:40:15");
+insert into voos(id_cidade,ponto_partida,companhia,num_voo,num_assento,qtd_assentos_disp,data_partida,data_chegada) 
+values(2,"Rio de Janeiro","Gol Transportes Aéreos","GA14CS","4C",54,"2022-10-23 22:30:00","2022-10-20 23:12:00");
+insert into voos(id_cidade,ponto_partida,companhia,num_voo,num_assento,qtd_assentos_disp,data_partida,data_chegada) 
+values(2,"Duque de Caxias","Gol Transportes Aéreos","GA14CS","4C",10,"2022-10-19 10:20:00","2022-10-19 13:02:00");
+insert into voos(id_cidade,ponto_partida,companhia,num_voo,num_assento,qtd_assentos_disp,data_partida,data_chegada)
+values(2,"São Paulo","Avianca","TU72VSF","8B",30,"2022-11-02 22:30:00","2022-11-03 07:12:00");
+insert into voos(id_cidade,ponto_partida,companhia,num_voo,num_assento,qtd_assentos_disp,data_partida,data_chegada)
+values(2,"São Paulo","Avianca","TU72VSF","3A",20,"2022-10-02 10:20:00","2022-10-02 13:40:15");
 
 /*USUÁRIOS*/
 insert into usuarios(nome,cpf,email,senha) 

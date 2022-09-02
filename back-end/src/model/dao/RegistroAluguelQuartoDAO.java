@@ -1,10 +1,9 @@
 package model.dao;
 
+import model.dao.interfaces.IRegistroAluguelQuartoDAO;
 import model.entity.RegistroAluguelQuarto;
 
 import java.sql.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -181,7 +180,7 @@ public class RegistroAluguelQuartoDAO implements IRegistroAluguelQuartoDAO {
     }
 
     public RegistroAluguelQuarto getIdQuartoByIdRegistro(int id_registro) {
-        String sql = "SELECT * FROM registroAluguelQuarto WHERE id_registro = ? OR entrada = ? ORDER BY entrada";
+        String sql = "SELECT * FROM registroAluguelQuarto WHERE id = ? OR entrada = ? ORDER BY entrada";
         ResultSet rset = null;
         RegistroAluguelQuarto registroAluguelQuarto = new RegistroAluguelQuarto();
         try {

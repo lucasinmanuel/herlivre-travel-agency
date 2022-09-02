@@ -1,4 +1,5 @@
 package model.dao;
+import model.dao.interfaces.ICidadeDAO;
 import model.entity.Cidade;
 
 import java.sql.Connection;
@@ -7,7 +8,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CidadeDAO implements ICidadeDAO {
+public class CidadeDAO implements ICidadeDAO{
 
     Connection conn = null;
     PreparedStatement pstm = null;

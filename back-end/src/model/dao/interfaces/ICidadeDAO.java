@@ -1,4 +1,4 @@
-package model.dao;
+package model.dao.interfaces;
 
 import model.entity.Cidade;
 
@@ -10,4 +10,6 @@ public interface ICidadeDAO {
     void updateById(Cidade cidade);
     List<Cidade> getCidades();
     int getIdByNome(String nome_cidade);
+
+    Cidade getCidadeById(int id_cidade);
 }

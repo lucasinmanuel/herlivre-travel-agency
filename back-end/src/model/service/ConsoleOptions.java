@@ -176,8 +176,10 @@ public class ConsoleOptions {
                 }
                 case 4 -> {
                     System.out.println("___");
+                    lerSubOpc = new Scanner(System.in);
                     System.out.print("Qual o seu ponto de partida? ");
-                    String destino = lerOpc.nextLine();
+                    String destino = lerSubOpc.nextLine();
+                    lerSubOpc = new Scanner(System.in);
                     System.out.print("Vai para qual cidade? ");
                     String nome_cidade = lerSubOpc.nextLine();
                     herlivreServiceImpl.getPacotesByNomeCidadeAndDestino(nome_cidade, destino);
@@ -213,7 +215,27 @@ public class ConsoleOptions {
                 }
                 case 3 -> {
                     System.out.println("");
-                    System.out.println("CRIAR  VOO PARA O PACOTE");
+                    lerSubOpc = new Scanner(System.in);
+                    System.out.println("Máximo de 2 pessoas");
+                    System.out.print("Total de pessoas para o pacote: ");
+                    int total_pessoas = 1;
+                    do{
+                        if(total_pessoas < 1 || total_pessoas > 2){
+                            System.out.println("Total de pessoas precisa ser 1 ou 2: ");
+                        }
+                        total_pessoas = lerSubOpc.nextInt();
+                    }while(total_pessoas < 1 || total_pessoas > 2);
+                    lerSubOpc = new Scanner(System.in);
+                    System.out.print("Valor do pacote sem desconto : ");
+                    double valor_original = lerSubOpc.nextDouble();
+                    lerSubOpc = new Scanner(System.in);
+                    System.out.print("Desconto do pacote: ");
+                    int desconto = lerSubOpc.nextInt();
+                    lerSubOpc = new Scanner(System.in);
+                    System.out.print("Valor do pacote com desconto: ");
+                    double valor_promocional = lerSubOpc.nextDouble();
+                    System.out.println("");
+                    System.out.println("COMPRAR VOO PARA O PACOTE");
                     System.out.println("_______________");
                     lerSubOpc = new Scanner(System.in);
                     System.out.print("Nome da cidade de partida: ");
@@ -236,8 +258,16 @@ public class ConsoleOptions {
                     lerSubOpc = new Scanner(System.in);
                     System.out.print("Data de chegada: ");
                     String data_chegada = lerSubOpc.nextLine();
-
+                    System.out.println("Passagem 01 foi comprada!");
                     int id_voo = admServiceImpl.insertVoo(cidadeDestino, cidadePartida, companhia, num_voo, num_assento, data_partida, data_chegada);
+                    int id_voo2 = -1;
+                    if(total_pessoas >= 2){
+                        System.out.println("Adicionar mais um assento por ser um pacote de 2 pessoas");
+                        lerSubOpc = new Scanner(System.in);
+                        System.out.print("Número do assento: ");
+                        String num_assento2 = lerSubOpc.nextLine();
+                        id_voo2 = admServiceImpl.insertVoo(cidadeDestino, cidadePartida, companhia, num_voo, num_assento2, data_partida, data_chegada);
+                    }
                     System.out.println("");
                     System.out.println("ESCOLHA O QUARTO DO HOTEL PARA A CIDADE DE DESTINO - " + cidadeDestino.toUpperCase());
 
@@ -272,20 +302,8 @@ public class ConsoleOptions {
                         System.out.print("Digite: ");
                         if (lerSubOpc.nextInt() == 1) {
                             int id_registroaluguel = herlivreServiceImpl.realizarRegistroAluguel(id_quarto, 1, data_entrada, data_saida);
-                            System.out.println("");
-                            lerSubOpc = new Scanner(System.in);
-                            System.out.print("Total de pessoas para o pacote: ");
-                            int total_pessoas = lerSubOpc.nextInt();
-                            lerSubOpc = new Scanner(System.in);
-                            System.out.print("Valor sem desconto do pacote: ");
-                            double valor_original = lerSubOpc.nextDouble();
-                            lerSubOpc = new Scanner(System.in);
-                            System.out.print("Desconto do pacote: ");
-                            int desconto = lerSubOpc.nextInt();
-                            lerSubOpc = new Scanner(System.in);
-                            System.out.print("Valor com desconto do pacote: ");
-                            double valor_promocional = lerSubOpc.nextDouble();
-                            int id_pacote = admServiceImpl.insertPacote(id_voo,id_registroaluguel,total_pessoas,valor_original,desconto,valor_promocional);
+                            int id_pacote = admServiceImpl.insertPacote(id_voo,id_voo2,id_registroaluguel,total_pessoas,valor_original,desconto,valor_promocional);
+                            System.out.print("Pacote criado!");
                         }
                     } else if (id_quarto == -1) {
                         System.out.println("Status do quarto: quarto indisponível para a data fornecida :(");

@@ -1,4 +1,4 @@
-package model.dao;
+package model.dao.interfaces;
 
 import model.entity.Usuario;
 

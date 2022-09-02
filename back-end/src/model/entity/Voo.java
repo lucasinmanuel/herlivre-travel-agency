@@ -9,16 +9,18 @@ public class Voo {
     private String companhia;
     private String num_voo;
     private String num_assento;
+    private int qtd_assentos_disp;
     private Date data_partida;
     private Date data_chegada;
 
-    public Voo(int id, int id_cidade, String ponto_partida, String companhia, String num_voo,String num_assento, Date data_partida, Date data_chegada) {
+    public Voo(int id, int id_cidade, String ponto_partida, String companhia, String num_voo, String num_assento, int qtd_assentos_disp, Date data_partida, Date data_chegada) {
         this.id = id;
         this.id_cidade = id_cidade;
         this.ponto_partida = ponto_partida;
         this.companhia = companhia;
         this.num_voo = num_voo;
         this.num_assento = num_assento;
+        this.qtd_assentos_disp = qtd_assentos_disp;
         this.data_partida = data_partida;
         this.data_chegada = data_chegada;
     }
@@ -73,6 +75,14 @@ public class Voo {
 
     public void setNum_assento(String num_assento) {
         this.num_assento = num_assento;
+    }
+
+    public int getQtd_assentos_disp() {
+        return qtd_assentos_disp;
+    }
+
+    public void setQtd_assentos_disp(int qtd_assentos_disp) {
+        this.qtd_assentos_disp = qtd_assentos_disp;
     }
 
     public Date getData_partida() {

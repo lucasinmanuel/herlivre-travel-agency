@@ -51,18 +51,22 @@ public class AdmServiceImpl {
         return vooDAO.insert(voo);
     }
 
-    public int insertPacote(int id_voo,int id_registroaluguelquarto,int total_pessoas,double valor_orignal,int desconto,double valor_promocional){
+    public int insertPacote(int id_voo,int id_voo2,int id_registroaluguelquarto,int total_pessoas,double valor_orignal,int desconto,double valor_promocional){
 
         Pacote pacote = new Pacote();
         pacote.setId_voo(id_voo);
+        pacote.setId_voo2(id_voo2);
         pacote.setId_registroaluguelquarto(id_registroaluguelquarto);
         pacote.setTotal_pessoas(total_pessoas);
         pacote.setValor_original(valor_orignal);
         pacote.setDesconto(desconto);
         pacote.setValor_promocional(valor_promocional);
-
-        //RETORNA O ID DO PACOTE
-        return pacoteDAO.insert(pacote);
+        if(id_voo2 != -1){
+            //RETORNA O ID DO PACOTE
+            return  pacoteDAO.insertIdsVoo(pacote);
+        }else{
+            return pacoteDAO.insert(pacote);
+        }
 
     }
 

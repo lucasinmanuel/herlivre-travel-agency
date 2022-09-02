@@ -3,15 +3,17 @@ package model.entity;
 public class Pacote {
     private int id;
     private int id_voo;
+    private int id_voo2;
     private int id_registroaluguelquarto;
     private int total_pessoas;
     private double valor_original;
     private int desconto;
     private double valor_promocional;
 
-    public Pacote(int id, int id_voo, int id_registroaluguelquarto, int total_pessoas, double valor_original, int desconto, double valor_promocional) {
+    public Pacote(int id, int id_voo, int id_voo2, int id_registroaluguelquarto, int total_pessoas, double valor_original, int desconto, double valor_promocional) {
         this.id = id;
         this.id_voo = id_voo;
+        this.id_voo2 = id_voo2;
         this.id_registroaluguelquarto = id_registroaluguelquarto;
         this.total_pessoas = total_pessoas;
         this.valor_original = valor_original;
@@ -37,6 +39,14 @@ public class Pacote {
 
     public void setId_voo(int id_voo) {
         this.id_voo = id_voo;
+    }
+
+    public int getId_voo2() {
+        return id_voo2;
+    }
+
+    public void setId_voo2(int id_voo2) {
+        this.id_voo2 = id_voo2;
     }
 
     public int getId_registroaluguelquarto() {

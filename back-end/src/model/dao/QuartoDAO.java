@@ -1,17 +1,68 @@
 package model.dao;
 
+import model.dao.interfaces.IQuartoDAO;
+import model.entity.Pacote;
 import model.entity.Quarto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuartoDAO {
+public class QuartoDAO implements IQuartoDAO {
 
     Connection conn = null;
     PreparedStatement pstm = null;
+
+//    public int insertIdsVoo(Quarto quarto) {
+//
+//        String sql = "INSERT INTO pacotes(id_voo,id_voo2,id_registroaluguelquarto,total_pessoas,valor_original,desconto,valor_promocional)" + " VALUES(?,?,?,?,?,?,?)";
+//        ResultSet rset;
+//        int id_pacote = -1;
+//        try {
+//
+//            conn = ConnectionFactory.createConnectionToMySQL();
+//
+//            pstm = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//
+//            pstm.setInt(1, quarto.getId_voo());
+//            pstm.setInt(2, quarto.getId_voo2());
+//            pstm.setInt(3, quarto.getId_registroaluguelquarto());
+//            pstm.setInt(4, quarto.getTotal_pessoas());
+//            pstm.setDouble(5, quarto.getValor_original());
+//            pstm.setInt(6, quarto.getDesconto());
+//            pstm.setDouble(7, quarto.getValor_promocional());
+//
+//            pstm.executeUpdate();
+//
+//            rset = pstm.getGeneratedKeys();
+//            if (rset.next()) {
+//                id_pacote = rset.getInt(1);
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//
+//            try {
+//                if (pstm != null) {
+//
+//                    pstm.close();
+//                }
+//
+//                if (conn != null) {
+//                    conn.close();
+//                }
+//
+//            } catch (Exception e) {
+//
+//                e.printStackTrace();
+//            }
+//        }
+//        return id_pacote;
+//    }
 
     public int getIdByIdHotelAndNumero(int id_hotel,int numero){
 

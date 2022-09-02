@@ -175,45 +175,48 @@ public class HerlivreServiceImpl implements IHerlivreService {
     public void getPacotes() {
 
         System.out.println("");
-        System.out.println("______________ LISTA DE CIDADES ________________");
-        for (Cidade c : cidadeDAO.getCidades()) {
+        System.out.println("______________ LISTA DE PACOTES ________________");
 
-            for (Voo v : vooDAO.getVoosByIdCidade(c.getId())) {
+
+            for (Voo v : vooDAO.getVoos()) {
 
                 for (Pacote p : pacoteDAO.getPacotesByIdVoo(v.getId())) {
                     RegistroAluguelQuarto registro = registroAluguelQuartoDAO.getIdQuartoByIdRegistro(p.getId_registroaluguelquarto());
                     Quarto quarto = quartoDAO.getQuartoById(registro.getId_quarto());
                     Hotel hotel = hotelDAO.getHotelById(quarto.getId_hotel());
+                    Cidade cidade = cidadeDAO.getCidadeById(hotel.getId_cidade());
 
                     System.out.println("");
-                    System.out.println("Id: " + p.getId());
+                    //PACOTE
+                    System.out.println("______________PACOTE "+p.getId()+"______________");
+                    System.out.println("Ponto de partida: " + v.getPonto_partida());
+                    System.out.println("Destino: " + cidade.getNome());
+                    System.out.println("Estado: " + cidade.getUf());
+                    System.out.println("País: " + cidade.getPais());
+                    System.out.println("Desconto: " + p.getDesconto()+"%");
+                    System.out.println("Valor promocional: " + p.getValor_promocional());
+                    System.out.println(" ̶V̶a̶l̶o̶r̶: " + p.getValor_original());
+                    System.out.println("Total de pessoas: " + p.getTotal_pessoas());
                     //HOTEL
+                    System.out.println("");
                     System.out.println("Nome do hotel: " + hotel.getNome());
                     System.out.println("Estrelas: " + hotel.getQtd_estrelas());
                     System.out.println("Café da manhã: " + hotel.isCafe_manha());
                     System.out.println("Wifi: " + hotel.isWifi());
                     //QUARTO
+                    System.out.println("");
                     System.out.println("Quantidade de camas: " + quarto.getQtd_camas());
                     System.out.println("Tipo do quarto: " + quarto.getTipo());
                     //REGISTRO DO QUARTO
+                    System.out.println("");
                     System.out.println("Data de entrada: " + registro.getEntrada());
                     System.out.println("Data de saída: " + registro.getSaida());
-                    //CIDADE
-                    System.out.println("Nome da cidade: " + c.getNome());
-                    System.out.println("Estado: " + c.getUf());
-                    System.out.println("País: " + c.getPais());
-                    System.out.println("Destino: " + c.getNome().toLowerCase());
-                    //PACOTE
-                    System.out.println("Desconto: " + p.getDesconto());
-                    System.out.println("Valor: " + p.getValor_original());
-                    System.out.println("Valor promocional: " + p.getValor_promocional());
-                    System.out.println("Total de pessoas: " + p.getTotal_pessoas());
+                    System.out.println("______________ FIM PACOTE "+p.getId()+"______________");
+                    System.out.println("");
+
                 }
 
             }
-
-        }
-        System.out.println("");
     }
 
     public void getPacotesByNomeCidadeAndDestino(String nome_destino, String ponto_partida) {
@@ -221,18 +224,18 @@ public class HerlivreServiceImpl implements IHerlivreService {
         int id_cidade = cidadeDAO.getIdByNome(nome_destino);
 
         System.out.println("");
-        System.out.println("______________ LISTA DE PACOTES ________________");
-        for (Voo v : vooDAO.getVoosByIdCidade(id_cidade)) {
-            if (v.getPonto_partida().equals(ponto_partida)) {
-                for (Pacote p : pacoteDAO.getPacotesByIdVoo(v.getId())) {
-                    System.out.println("");
-                    System.out.println("Id: " + p.getId());
-                    System.out.println("Destino: " + nome_destino.toLowerCase());
-                    System.out.println("Desconto: " + p.getDesconto());
-                    System.out.println("Valor: " + p.getValor_original());
-                    System.out.println("Valor promocional: " + p.getValor_promocional());
-                }
+        System.out.println("______________ LISTA DE PACOTES PARA "+nome_destino.toUpperCase()+" ________________");
+        for (Voo v : vooDAO.getVoosByIdCidadeAndPontoPartida(id_cidade,ponto_partida)) {
+
+            for (Pacote p : pacoteDAO.getPacotesByIdVoo(v.getId())) {
+                System.out.println("");
+                System.out.println("Id: " + p.getId());
+                System.out.println("Destino: " + nome_destino.toLowerCase());
+                System.out.println("Desconto: " + p.getDesconto());
+                System.out.println("Valor: " + p.getValor_original());
+                System.out.println("Valor promocional: " + p.getValor_promocional());
             }
+
         }
         System.out.println("");
     }

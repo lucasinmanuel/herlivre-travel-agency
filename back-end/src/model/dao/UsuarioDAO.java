@@ -1,5 +1,6 @@
 package model.dao;
 
+import model.dao.interfaces.IUsuarioDAO;
 import model.entity.Usuario;
 
 import java.sql.Connection;

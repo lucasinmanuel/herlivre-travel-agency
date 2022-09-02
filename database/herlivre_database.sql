@@ -77,15 +77,15 @@ create table if not exists voos(
     companhia varchar(30) not null,
     num_voo varchar(10) not null,
     num_assento char(2) not null,
-    qtd_assentos_disp int,
+    qtd_assentos_disp int not null,
     data_partida datetime not null,
     data_chegada datetime not null,
     foreign key (id_cidade) references cidades (id)
     
 );
 
-insert into voos(id_cidade,ponto_partida,companhia,num_voo,num_assento,data_partida,data_chegada) 
-values(1,"null","null",0,0,"9999-12-31","9999-12-31");
+insert into voos(id_cidade,ponto_partida,companhia,num_voo,num_assento,qtd_assentos_disp,data_partida,data_chegada) 
+values(1,"null","null",0,0,0,"9999-12-31","9999-12-31");
 
 select * from voos where id != 1;
 
@@ -93,12 +93,14 @@ create table if not exists pacotes(
 
 	id int primary key auto_increment,
     id_voo int not null,
+    id_voo2 int,
     id_registroaluguelquarto int not null,
     total_pessoas int not null,
     valor_original double not null,
-    desconto int,
-    valor_promocional double,
+    desconto int not null,
+    valor_promocional double not null,
     foreign key (id_voo) references voos (id),
+    foreign key (id_voo2) references voos (id),
     foreign key (id_registroaluguelquarto) references registroaluguelquarto (id)
     
 );

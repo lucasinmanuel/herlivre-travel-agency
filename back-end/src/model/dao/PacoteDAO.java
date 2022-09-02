@@ -58,12 +58,60 @@ public class PacoteDAO {
         return id_pacote;
     }
 
+    public int insertIdsVoo(Pacote pacote) {
+
+        String sql = "INSERT INTO pacotes(id_voo,id_voo2,id_registroaluguelquarto,total_pessoas,valor_original,desconto,valor_promocional)" + " VALUES(?,?,?,?,?,?,?)";
+        ResultSet rset;
+        int id_pacote = -1;
+        try {
+
+            conn = ConnectionFactory.createConnectionToMySQL();
+
+            pstm = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            pstm.setInt(1, pacote.getId_voo());
+            pstm.setInt(2, pacote.getId_voo2());
+            pstm.setInt(3, pacote.getId_registroaluguelquarto());
+            pstm.setInt(4, pacote.getTotal_pessoas());
+            pstm.setDouble(5, pacote.getValor_original());
+            pstm.setInt(6, pacote.getDesconto());
+            pstm.setDouble(7, pacote.getValor_promocional());
+
+            pstm.executeUpdate();
+
+            rset = pstm.getGeneratedKeys();
+            if (rset.next()) {
+                id_pacote = rset.getInt(1);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+            try {
+                if (pstm != null) {
+
+                    pstm.close();
+                }
+
+                if (conn != null) {
+                    conn.close();
+                }
+
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+        }
+        return id_pacote;
+    }
+
+
     public List<Pacote> getPacotesByIdVoo(int id_voo) {
-        String sql = "SELECT * FROM pacotes WHERE id_voo = ? OR id != ?";
+        String sql = "SELECT * FROM pacotes WHERE id_voo = ? AND id != ?";
         ResultSet rset = null;
         List<Pacote> pacotes = new ArrayList<>();
         try {
-
             conn = ConnectionFactory.createConnectionToMySQL();
 
             pstm = conn.prepareStatement(sql);
@@ -109,4 +157,5 @@ public class PacoteDAO {
 
         return pacotes;
     }
+
 }
