@@ -1,13 +1,13 @@
 package model.dao;
 
-import model.entity.RegistroAluguelQuarto;
+import model.dao.interfaces.IVooDAO;
 import model.entity.Voo;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VooDAO {
+public class VooDAO implements IVooDAO {
     Connection conn = null;
     PreparedStatement pstm = null;
 
@@ -60,6 +60,84 @@ public class VooDAO {
         return id_voo;
     }
 
+    public boolean deleteById(int id) {
+
+        String sql = "DELETE FROM voos WHERE id = ?";
+        boolean result = false;
+
+        try {
+
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, id);
+
+            pstm.execute();
+            result = true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+
+                if (conn != null) {
+                    conn.close();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+    }
+
+    public void updateById(Voo voo){
+
+        String sql = "UPDATE voos SET id_cidade = ?,ponto_partida = ?,companhia = ?,num_voo = ?,num_assento = ?,qtd_assentos_disp = ?,data_partida = ?,data_chegada = ? WHERE id = ?";
+
+        try {
+
+            conn = ConnectionFactory.createConnectionToMySQL();
+
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setInt(1, voo.getId_cidade());
+            pstm.setString(2, voo.getPonto_partida());
+            pstm.setString(3,voo.getCompanhia());
+            pstm.setString(4,voo.getNum_voo());
+            pstm.setString(5,voo.getNum_assento());
+            pstm.setInt(6,voo.getQtd_assentos_disp());
+            pstm.setDate(7,new Date(voo.getData_partida().getTime()));
+            pstm.setDate(8,new Date(voo.getData_chegada().getTime()));
+            pstm.setInt(9,voo.getId());
+
+            // Executa a sql para inserção dos dados
+            pstm.execute();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Fecha as conexões
+            try {
+                if (pstm != null) {
+
+                    pstm.close();
+                }
+
+                if (conn != null) {
+                    conn.close();
+                }
+
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+        }
+
+    }
+
     public List<Voo> getVoos(){
         String sql = "SELECT * FROM voos WHERE id != ?";
         ResultSet rset = null;
@@ -80,6 +158,7 @@ public class VooDAO {
                 voo.setCompanhia(rset.getString("companhia"));
                 voo.setNum_voo(rset.getString("num_voo"));
                 voo.setNum_assento(rset.getString("num_assento"));
+                voo.setQtd_assentos_disp(rset.getInt("qtd_assentos_disp"));
                 voo.setData_partida(rset.getDate("data_chegada"));
                 voo.setData_chegada(rset.getDate("data_partida"));
                 voos.add(voo);
@@ -133,6 +212,7 @@ public class VooDAO {
                 voo.setCompanhia(rset.getString("companhia"));
                 voo.setNum_voo(rset.getString("num_voo"));
                 voo.setNum_assento(rset.getString("num_assento"));
+                voo.setQtd_assentos_disp(rset.getInt("qtd_assentos_disp"));
                 voo.setData_partida(rset.getDate("data_chegada"));
                 voo.setData_chegada(rset.getDate("data_partida"));
                 voos.add(voo);
@@ -186,6 +266,7 @@ public class VooDAO {
                 voo.setCompanhia(rset.getString("companhia"));
                 voo.setNum_voo(rset.getString("num_voo"));
                 voo.setNum_assento(rset.getString("num_assento"));
+                voo.setQtd_assentos_disp(rset.getInt("qtd_assentos_disp"));
                 voo.setData_partida(rset.getDate("data_chegada"));
                 voo.setData_chegada(rset.getDate("data_partida"));
                 voos.add(voo);
@@ -240,6 +321,7 @@ public class VooDAO {
                 voo.setCompanhia(rset.getString("companhia"));
                 voo.setNum_voo(rset.getString("num_voo"));
                 voo.setNum_assento(rset.getString("num_assento"));
+                voo.setQtd_assentos_disp(rset.getInt("qtd_assentos_disp"));
                 voo.setData_partida(rset.getDate("data_chegada"));
                 voo.setData_chegada(rset.getDate("data_partida"));
                 voos.add(voo);

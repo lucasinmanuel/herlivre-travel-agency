@@ -71,8 +71,8 @@ values(2,"São Paulo","Avianca","TU72VSF","3A",20,"2022-10-02 10:20:00","2022-10
 
 /*USUÁRIOS*/
 insert into usuarios(nome,cpf,email,senha) 
-values("Lucas","123-345-678-99","lucas.recode@gmail.com","123");
-insert into usuarios(nome,cpf,email,senha) 
+values("Lucas","123-345-678-99","lucas.recode@gmail.com","123456");
+insert into usuarios(nome,cpf,email,senha)
 values("Flavio","111-234-125-45","flavio.recode@gmail.com","321");
 insert into usuarios(nome,cpf,email,senha) 
 values("bruno","231-324-256-67","bruno.recode@gmail.com","132");

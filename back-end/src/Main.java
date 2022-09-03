@@ -1,8 +1,4 @@
-import model.service.AdmServiceImpl;
 import model.service.ConsoleOptions;
-import model.service.HerlivreServiceImpl;
-
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,5 +24,6 @@ public class Main {
             System.out.println("--------------------------------------------------------------------------------");
             consoleOptions.areaAdmin();
         }
+
     }
 }

@@ -1,6 +1,5 @@
 package model.service;
 
-import com.sun.jdi.VMOutOfMemoryException;
 import model.dao.CidadeDAO;
 import model.dao.PacoteDAO;
 import model.dao.VooDAO;
@@ -10,7 +9,6 @@ import model.entity.Voo;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
 
 public class AdmServiceImpl {
 

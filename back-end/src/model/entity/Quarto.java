@@ -1,6 +1,8 @@
 package model.entity;
 
 public class Quarto {
+
+    private int id;
     private int numero;
     private int id_hotel;
     private double valor;
@@ -8,7 +10,8 @@ public class Quarto {
     private int qtd_camas;
     private String tipo;
 
-    public Quarto(int numero, int id_hotel, double valor, int qtd_camas, int diaria,String tipo) {
+    public Quarto(int id,int numero, int id_hotel, double valor, int qtd_camas, int diaria,String tipo) {
+        this.id = id;
         this.numero = numero;
         this.id_hotel = id_hotel;
         this.valor = valor;
@@ -19,6 +22,14 @@ public class Quarto {
 
     public Quarto(){
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getNumero() {

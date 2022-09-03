@@ -122,6 +122,8 @@ create table if not exists usuarios(
 
 insert into usuarios(nome,cpf,email,senha) 
 values("adm","0","adm.recode@gmail.com","123456789");
+insert into usuarios(nome,cpf,email,senha) 
+values("Vânia","163-385-273-58","vânia.recode@gmail.com","123");
 
 select * from usuarios where id != 1;
 

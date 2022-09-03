@@ -12,5 +12,6 @@ public interface IRegistroAluguelQuartoDAO {
     boolean deleteById(int id);
     void updateById(RegistroAluguelQuarto registroAluguelQuarto);
     List<RegistroAluguelQuarto> getRegistroAlugueis();
+    RegistroAluguelQuarto getIdQuartoByIdRegistro(int id_registro);
     List<RegistroAluguelQuarto> getRegAlugueisByIdQuarto(int id_quarto);
 }
