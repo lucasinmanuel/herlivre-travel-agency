@@ -139,7 +139,7 @@
                 <!--FIM INPUT BUSCAR CIDADES OU HOTÉIS-->
 
                 <!--INÍCIO INPUT DATA IDA/VOLTA-->
-                <label class="text-muted mt-3">Escolha o período de Ida</label>
+                <label class="text-muted mt-3">Escolha o período de Ida/Volta</label>
                 <br />
                 <div class="d-sm-flex justify-content-center justify-content-xl-start">
                   <div class="w-100 d-flex border border-2 rounded-3 mb-2 mb-sm-0 p-2 me-2">
@@ -147,34 +147,33 @@
                     <input id="dataIda" style="outline: none" class="w-100 border-0" type="date" name="dataIda"
                       required />
                   </div>
-                  <!-- <div class="w-100 d-flex border border-2 rounded-3 p-2">
+                  <div class="w-100 d-flex border border-2 rounded-3 p-2">
                     <label for="dataVolta" class="text-muted me-1" style="white-space: nowrap">Volta |</label>
                     <input id="dataVolta" style="outline: none" class="w-100 border-0" type="date" name="dataVolta"
                       required />
-                  </div> -->
+                  </div>
                 </div>
                 <!--FIM INPUT DATA IDA/VOLTA-->
 
                 <!--INÍCIO INPUT QTD VIAJANTES/QUARTOS-->
-                <!--<label for="numberPeople" class="text-muted mt-3">Viajantes e quartos</label>
+                <label for="numberPeople" class="text-muted mt-3">Máximo de 2 viajantes por pacote</label>
                 <br />
                 <div
                   class="w-100 d-xl-flex align-items-center justify-content-xl-between border border-2 rounded-3 p-2">
                   <div class="d-md-flex justify-content-center">
                     <img src="./images/people.svg" alt="icone de pessoas" />
                     <input id="numberPeople" style="outline: none; width: 50px" class="border text-center mx-1"
-                      type="number" name="numberPeople" min="1" max="7" maxlength="1" required />
+                      type="number" name="numberPeople" min="1" max="2" maxlength="1" required />
                     <span style="white-space: nowrap">Pessoa(s) |</span>
                     <img class="ms-2 me-1" src="./images/house.svg" alt="icone de pessoas" />
-                    <span style="white-space: nowrap">1 Quarto</span>
+                    <span style="white-space: nowrap">1 Pacote</span>
                   </div>
 
                   <button style="white-space: nowrap" type="button"
                     class="btn btn-outline-warning fw-bold rounded-pill mt-2 mt-xl-0 px-3 py-1">
-                    Adicionar quarto
+                    Adicionar pacote
                   </button>
                 </div>
-                -->
                 <!--FIM INPUT QTD VIAJANTES/QUARTOS-->
 
                 <input type="submit" class="w-50 btn btn-warning text-light fs-5 fw-bold p-2 mt-4"
