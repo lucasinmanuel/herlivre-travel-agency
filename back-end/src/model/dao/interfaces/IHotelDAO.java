@@ -8,7 +8,7 @@ public interface IHotelDAO {
     void insert(Hotel hotel);
     boolean deleteById(int id);
     void updateById(Hotel hotel);
-    List<Hotel> getCidades();
+    List<Hotel> getHoteis();
     Hotel getHotelById(int id_hotel);
     int getIdByNome(String nome_hotel);
     List<Hotel> getHoteisByIdCidade(int id_cidade);
