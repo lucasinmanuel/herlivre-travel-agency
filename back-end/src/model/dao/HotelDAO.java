@@ -136,7 +136,7 @@ public class HotelDAO implements IHotelDAO {
 
     }
 
-    public List<Hotel> getCidades() {
+    public List<Hotel> getHoteis() {
 
         String sql = "SELECT * FROM hoteis WHERE id != ?";
         ResultSet rset = null;
