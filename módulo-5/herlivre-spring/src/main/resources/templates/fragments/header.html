@@ -1,0 +1,68 @@
+<nav th:fragment="html_header" class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="/pages/home">
+            <img th:src="@{/images/logos/herlivre.png}" width="200px" alt="logo herlivre" />
+        </a>
+
+        <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon fs-2"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-md-flex justify-content-md-end" id="navbarNav">
+            <ul class="navbar-nav text-center d-flex align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${pageActive == 'home'} ? 'active' : '' " href="/pages/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${pageActive == 'destinations'} ? 'active' : '' " href="/pages/national-destinations">Destino</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${pageActive == 'promotions'} ? 'active' : '' " href="/pages/promotions">Promoções</a>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-info dropdown-toggle mx-1 shadow-none" type="button"
+                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ajuda
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <a class="dropdown-item" th:classappend="${pageActive == 'contact'} ? 'active' : '' " href="/pages/contact">Contato</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" th:classappend="${pageActive == 'about'} ? 'active' : '' " href="/pages/about">Sobre</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li th:if="${session.usuario == null}" class="nav-item mx-auto">
+                    <a class="nav-link" th:classappend="${pageActive == 'login'} ? 'active' : '' " href="/pages/login">
+                    <img width="24px" th:src="@{/images/icons/login.svg}" alt="ícone de login" />
+                    <span class="ms-1">Entrar</span>
+                    </a>
+                </li>
+                <li th:if="${session.usuario != null}" class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle mx-1 shadow-none" type="button"
+                                id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img style="border-radius: 50%;" width="35px" th:src="@{/images/icons/user_image_placeholder.png}" alt="ícone de usuário" />
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                            <li>
+                                <a class="dropdown-item" th:classappend="${pageActive == 'profile'} ? 'active' : '' " href="/pages/profile">Perfil</a>
+                            </li>
+                            <li th:if="${session.usuario.cargo.id == 1}">
+                                <a class="dropdown-item" th:classappend="${pageActive == 'dashboard'} ? 'active' : '' " href="/admin/dashboard">Dashboard</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/logout">Sair</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--container-->
+</nav>

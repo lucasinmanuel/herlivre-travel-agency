@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro - registro de alugueis dos quartos</title>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+            crossorigin="anonymous"
+    >
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+            crossorigin="anonymous">
+    </script>
+</head>
+<body>
+<div class="container px-5 py-3">
+    <a class="btn btn-info" href="/admin/dashboard">Dashboard</a>
+    <h3>Cadastro do registro de alugueis dos quartos</h3>
+    <form th:object="${registroaluguelquarto}" action="/admin/registroaluguelquarto/insert" method="post" class="form-control">
+        <fieldset>
+            <legend>Dados do registro de alugueis dos quartos</legend>
+            <p>
+                <label for="id_quarto">Id do quarto:</label>
+                <input type="number" id="id_quarto" name="id_quarto" size="15" class="form-control" required>
+            </p>
+            <p>
+                <label for="data_entrada">Data de entrada:</label>
+                <input th:field="${registroaluguelquarto.data_entrada}" type="date" id="data_entrada" name="data_entrada" size="15" class="form-control" required>
+            </p>
+            <p>
+                <label for="data_saida">data de saída:</label>
+                <input th:field="${registroaluguelquarto.data_saida}" type="date" id="data_saida" name="data_saida" size="15" class="form-control" required>
+            </p>
+            <p>
+                <input type="submit" value="Cadastrar" class="btn btn-primary">
+            </p>
+        </fieldset>
+    </form>
+    <div class="overflow-auto">
+
+    <table class="table w-100 mx-auto text-center">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Id do quarto</th>
+            <th>Data de entrada</th>
+            <th>Data de saída</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="registroaluguelquarto : ${registroaluguelquartos}">
+                <td th:text="${registroaluguelquarto.id}"></td>
+                <td th:text="${registroaluguelquarto.quarto.id}"></td>
+                <td th:text="${registroaluguelquarto.data_entrada}"></td>
+                <td th:text="${registroaluguelquarto.data_saida}"></td>
+                <td>
+                    <a th:href="@{'/admin/registroaluguelquarto/edit/'+${registroaluguelquarto.id}}" class="btn btn-success">Editar</a>
+                    <a th:href="@{'/admin/registroaluguelquarto/delete/'+${registroaluguelquarto.id}}" onclick="return confirm('Deseja Excluir?')"
+                       class="btn btn-danger"
+                    >Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+</div>
+</body>
+</html>

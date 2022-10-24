@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Herlivre - Sobre a Empresa</title>
+  <meta name="author" content="Herlivre - Lucas Emanuel Santana dos Santos" />
+  <meta name="description" content="Herlivre - Encontre a melhor forma de viajar - Agência de viagens." />
+  <meta name="keywords" content="desenvolvimento,agência,viagem,milhas,carros,aluguel,hotéis,voos" />
+  <meta name="theme-color" content="#ffc107" />
+  <!-- <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" /> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+</head>
+
+<body>
+<nav th:replace="fragments/header::html_header(pageActive='about')"></nav>
+<main>
+    <section class="sobre">
+      <div class="container py-5">
+        <div class="row bg-info shadow rounded-3">
+          <div class="col-xl-6 align-self-end">
+            <img class="d-none d-xl-block" width="100%" th:src="@{/images/comissária-de-bordo-desktop.png}"
+              alt="comissária de bordo" />
+          </div>
+          <!--col-->
+
+          <div class="col-xl-6 align-self-center p-4">
+            <div class="h-100 px-3 py-4 bg-warning rounded-3">
+              <h1>Herlivre - Conforto e Qualidade</h1>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt
+                dolorum debitis praesentium perspiciatis numquam totam quaerat
+                nemo rerum laboriosam, ratione est maxime nesciunt culpa
+                eaque, ad cupiditate aperiam accusantium veniam!
+              </p>
+
+              <h3 class="mt-4">Qualidades da empresa!</h3>
+              <ul>
+                <li>Atendimento</li>
+                <li>Serviços</li>
+                <li>Promoções</li>
+                <li>Conforto</li>
+              </ul>
+              <h3 class="mt-4">Sobre</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+                provident reiciendis consequuntur eveniet aspernatur autem, in
+                quidem atque ratione consectetur dolorum veritatis ducimus ea
+                quisquam eum id. Voluptatum, impedit molestiae.
+              </p>
+            </div>
+          </div>
+          <!--col-->
+        </div>
+        <!--row-->
+      </div>
+      <!--container-->
+    </section>
+    <!--sobre-->
+  </main>
+  <footer th:replace="fragments/footer::html_footer"></footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

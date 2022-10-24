@@ -1,0 +1,62 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title th:text="@{'Alteração do quarto'+${quarto.id}}"></title>
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+            crossorigin="anonymous">
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<div class="container px-5 py-3">
+    <h3 th:text="@{'Alteração do quarto'+${quarto.id}}"></h3>
+    <form th:object="${quarto}" action="/admin/quarto/update" method="post" class="form-control">
+        <input type="hidden" name="id" th:field="${quarto.id}" th:value="${quarto.id}">
+        <p>
+            <label for="id_hotel">Id do hotel:</label>
+            <input th:value="${quarto.hotel.id}" type="number" id="id_hotel" name="id_hotel" size="15" class="form-control" required>
+        </p>
+        <p>
+            <label for="numero">Número do quarto:</label>
+            <input th:field="${quarto.numero}" th:value="${quarto.numero}" type="number" id="numero" name="numero" size="15" class="form-control" min="101" required>
+        </p>
+        <p>
+            <label for="valor">Valor:</label>
+            <input th:field="${quarto.valor}" th:value="${quarto.valor}" type="text" id="valor" name="valor" size="15" class="form-control" required>
+        </p>
+        <p>
+            <label for="diaria">Diária:</label>
+            <input th:field="${quarto.diaria}" th:value="${quarto.diaria}" type="number" id="diaria" name="diaria" size="15" class="form-control" maxlength="1" required>
+        </p>
+        <p>
+            <label for="qtd_camas">Qtd de camas:</label>
+            <input th:field="${quarto.qtd_camas}" th:value="${quarto.qtd_camas}" type="number" id="qtd_camas" name="qtd_camas" size="15" maxlength="1" max="2" class="form-control" required>
+        </p>
+        <p>
+            <label for="tipo">Tipo de quarto:</label>
+            <select id="tipo" name="tipo">
+                <option value="Single room" th:if="${quarto.tipo == 'Single room'}" selected>Single room</option>
+                <option value="Twin room" th:if="${quarto.tipo == 'Single room'}">Twin room</option>
+                <option value="Double room" th:if="${quarto.tipo == 'Single room'}">Double room</option>
+                <option value="Twin room" th:if="${quarto.tipo == 'Twin room'}" selected>Twin room</option>
+                <option value="Single room" th:if="${quarto.tipo == 'Twin room'}">Single room</option>
+                <option value="Double room" th:if="${quarto.tipo == 'Twin room'}">Double room</option>
+                <option value="Double room" th:if="${quarto.tipo == 'Double room'}" selected>Double room</option>
+                <option value="Twin room" th:if="${quarto.tipo == 'Double room'}">Twin room</option>
+                <option value="Single room" th:if="${quarto.tipo == 'Double room'}">Single room</option>
+            </select>
+        </p>
+        <button type="submit" class="btn btn-success">Atualizar</button>
+    </form>
+</div>
+</body>
+</html>
