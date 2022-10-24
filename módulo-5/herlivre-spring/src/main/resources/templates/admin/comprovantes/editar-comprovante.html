@@ -35,7 +35,7 @@
     </p>
     <p>
       <label for="data_compra">Data da compra:</label>
-      <input th:field="${comprovante.data_compra}" th:value="${comprovante.data_compra}" type="number" min="2" id="data_compra" name="data_compra" size="15" class="form-control" required>
+      <input th:field="${comprovante.data_compra}" th:value="${comprovante.data_compra}" type="date" id="data_compra" name="data_compra" size="15" class="form-control" required>
     </p>
     <button type="submit" class="btn btn-success">Atualizar</button>
   </form>

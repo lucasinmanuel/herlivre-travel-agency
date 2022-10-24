@@ -89,6 +89,6 @@ public class ComprovanteController {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "redirect:/admin/cidade/select";
+        return "redirect:/admin/comprovante/select";
     }
 }

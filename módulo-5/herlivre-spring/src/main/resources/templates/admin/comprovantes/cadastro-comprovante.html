@@ -59,8 +59,8 @@
           <td th:text="${comprovante.pacote.id}"></td>
           <td th:text="${comprovante.data_compra}"></td>
           <td>
-            <a th:href="@{'/comprovante/edit/'+${comprovante.id}}" class="btn btn-success">Editar</a>
-            <a th:href="@{'/comprovante/delete/'+${comprovante.id}}" onclick="return confirm('Deseja Excluir?')"
+            <a th:href="@{'/admin/comprovante/edit/'+${comprovante.id}}" class="btn btn-success">Editar</a>
+            <a th:href="@{'/admin/comprovante/delete/'+${comprovante.id}}" onclick="return confirm('Deseja Excluir?')"
                class="btn btn-danger"
             >Excluir</a>
           </td>
