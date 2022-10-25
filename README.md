@@ -16,14 +16,12 @@
             <li><b>Status: </b>concluído.</li>
             <li><b>Tecnologias: </b>HTML, CSS e Bootstrap.</li>
         </ul>
-        <br />
         <h4><u>Pseudocódigo (portugol)</u></h4>
         <ul>
             <li><b>Status: </b>concluído.</li>
             <li><b>Tecnologias: </b>Visualg.</li>
         </ul>
     </li>
-    <br />
     <li>
         <h3>Módulo 3</h3>
         <p>Melhorando o Front-end, criação de um projeto do tipo console com CRUD e modelagem de um banco de dados.</p>
@@ -32,14 +30,12 @@
             <li><b>Status: </b>concluído.</li>   
             <li><b>Tecnologias: </b>Java e JDBC.</li>
         </ul>
-        <br />
         <h4><u>Base de dados</u></h4>
         <ul>
             <li><b>Status: </b>concluído.</li>
             <li><b>Tecnologias: </b>MySQL e BrModelo.</li>
         </ul>
     </li>
-    <br />
     <li>
         <h3>Módulo 4</h3>
         <p>Refatorando o código para o padrão de projeto MCV.</p>
@@ -48,14 +44,12 @@
             <li><b>Status: </b>concluído.</li>
             <li><b>Tecnologias: </b>HTML, CSS, Bootstrap, JSP e JSTL.</li>
         </ul>
-        <br />
         <h4><u>Back-end (model e controller)</u></h4>
         <ul>
             <li><b>Status: </b>concluído.</li>
             <li><b>Tecnologias: </b>Java, JDBC e Servlet.</li>
         </ul>
     </li>
-    <br />
     <li>
         <h3>Módulo 5</h3>
         <p>Refatoração para Spring MVC.</p>
@@ -64,7 +58,6 @@
             <li><b>Status: </b>concluído.</li>
             <li><b>Tecnologias: </b>HTML, CSS, Bootstrap e Thymeleaf.</li>
         </ul>
-        <br />
         <h4><u>Back-end (model e controller)</u></h4>
         <ul>
             <li><b>Status: </b>concluído.</li>
