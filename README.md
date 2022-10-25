@@ -2,7 +2,6 @@
     <h1>Herlivre - Agência de viagens</h1>
     <img src="avião-viagem.gif" alt="Um avião voando" />
 </div>
-<br />
 <h2>Recode Pro 2022</h2>
 <p>Olá! Me chamo Lucas. Estou participando do programa Recode Pro 2022, aqui você encontra o projeto da agência de viagem Herlivre que está sendo desenvolvido ao longo do curso.</p>
 
