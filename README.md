@@ -38,7 +38,7 @@
     </li>
     <li>
         <h3>Módulo 4</h3>
-        <p>Refatorando o código para o padrão de projeto MCV.</p>
+        <p>Refatorando o código para o padrão de projeto MVC.</p>
         <h4><u>Front-end (view)</u></h4>
         <ul>
             <li><b>Status: </b>concluído.</li>
@@ -62,6 +62,20 @@
         <ul>
             <li><b>Status: </b>concluído.</li>
             <li><b>Tecnologias: </b>Spring Boot Starter Web, Spring Data JPA e Spring Security.</li>
+        </ul>
+    </li>
+    <li>
+        <h3>Módulo 6</h3>
+        <p>Criação de uma Web API em C#.</p>
+        <h4><u>Front-end</u></h4>
+        <ul>
+            <li><b>Status: </b>concluído.</li>
+            <li><b>Tecnologias: </b>ASP.NET Scaffolding.</li>
+        </ul>
+        <h4><u>Back-end</u></h4>
+        <ul>
+            <li><b>Status: </b>concluído.</li>
+            <li><b>Tecnologias: </b>C# e DOT NET.</li>
         </ul>
     </li>
 </ul>
